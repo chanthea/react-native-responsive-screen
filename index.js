@@ -1,12 +1,22 @@
 
 // packages
-import { Dimensions, PixelRatio } from "react-native";
+import { Platform, Dimensions, PixelRatio } from "react-native";
+
+const IsIphoneXorAbove = ()=> {
+    const dimen = Dimensions.get('window');
+    return (
+      Platform.OS === 'ios' &&
+      !Platform.isPad &&
+      !Platform.isTVOS &&
+      ((dimen.height === 812 || dimen.width === 812) || (dimen.height === 896 || dimen.width === 896))
+    );
+  }
 
 // Retrieve initial screen's width
 let screenWidth = Dimensions.get("window").width;
 
 // Retrieve initial screen's height
-let screenHeight = Dimensions.get("window").height;
+let screenHeight = IsIphoneXorAbove() ? Dimensions.get("window").height - 40 : Dimensions.get("window").height;
 
 /**
  * Converts provided width percentage to independent pixel (dp).
