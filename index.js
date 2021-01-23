@@ -92,5 +92,7 @@ export {
   widthPercentageToDP,
   heightPercentageToDP,
   listenOrientationChange,
-  removeOrientationListener
+  removeOrientationListener,
+    widthPercentageToDP as wpdp,
+  heightPercentageToDP as hpdp,
 };
